@@ -1,20 +1,14 @@
 import { GoogleGenAI } from "@google/genai";
 import { LocationAnalysis, GroundingChunk } from "../types";
 
-const apiKey = process.env.API_KEY || '';
-
 // Initialize Gemini Client
-const ai = new GoogleGenAI({ apiKey });
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const analyzeLocationContext = async (
   latitude: number,
   longitude: number
 ): Promise<LocationAnalysis> => {
   try {
-    if (!apiKey) {
-      throw new Error("API Key is missing. Please check your environment variables.");
-    }
-
     const prompt = `I am currently located at Latitude: ${latitude}, Longitude: ${longitude}. 
     
     Please do the following using Google Search:
