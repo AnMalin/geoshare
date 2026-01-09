@@ -34,7 +34,7 @@ const App: React.FC = () => {
 
     if (!navigator.geolocation) {
       setLocationStatus(LocationStatus.ERROR);
-      setErrorMsg("Geolocation is not supported by your browser.");
+      setErrorMsg("Geolocalizarea nu este suportată de browserul tău.");
       return;
     }
 
@@ -55,16 +55,16 @@ const App: React.FC = () => {
         setLocationStatus(LocationStatus.ERROR);
         switch (error.code) {
           case error.PERMISSION_DENIED:
-            setErrorMsg("User denied the request for Geolocation.");
+            setErrorMsg("Utilizatorul a refuzat cererea de localizare.");
             break;
           case error.POSITION_UNAVAILABLE:
-            setErrorMsg("Location information is unavailable.");
+            setErrorMsg("Informațiile despre locație nu sunt disponibile.");
             break;
           case error.TIMEOUT:
-            setErrorMsg("The request to get user location timed out.");
+            setErrorMsg("Cererea de localizare a expirat.");
             break;
           default:
-            setErrorMsg("An unknown error occurred.");
+            setErrorMsg("A apărut o eroare necunoscută.");
             break;
         }
       },
@@ -90,12 +90,12 @@ const App: React.FC = () => {
             <div className="bg-indigo-600 p-1.5 rounded-lg text-white">
               <LocationIcon className="w-5 h-5" />
             </div>
-            <h1 className="text-xl font-bold tracking-tight text-slate-900">GeoShare AI</h1>
+            <h1 className="text-xl font-bold tracking-tight text-slate-900">Află Locația</h1>
           </div>
           <button 
             onClick={getLocation}
             className="p-2 text-slate-500 hover:text-indigo-600 hover:bg-slate-100 rounded-full transition-colors"
-            aria-label="Refresh Location"
+            aria-label="Reîmprospătează locația"
           >
             <RefreshIcon className={`w-5 h-5 ${locationStatus === LocationStatus.LOADING ? 'animate-spin' : ''}`} />
           </button>
@@ -111,7 +111,7 @@ const App: React.FC = () => {
              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 shrink-0 text-red-500" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
-            <p>{errorMsg || "Unable to retrieve location."}</p>
+            <p>{errorMsg || "Nu s-a putut obține locația."}</p>
           </div>
         )}
 
@@ -119,7 +119,7 @@ const App: React.FC = () => {
         {locationStatus === LocationStatus.LOADING && (
           <div className="w-full h-48 bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center gap-3 animate-pulse">
              <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-             <p className="text-sm font-medium text-slate-500">Acquiring satellites...</p>
+             <p className="text-sm font-medium text-slate-500">Se caută sateliți...</p>
           </div>
         )}
 
@@ -139,14 +139,14 @@ const App: React.FC = () => {
                     <div className="text-2xl md:text-3xl font-bold font-mono tracking-tighter">
                       {coords.latitude.toFixed(5)}
                     </div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">Latitude</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">Latitudine</div>
                   </div>
                   <div className="w-px bg-slate-700 h-10 self-center"></div>
                   <div className="flex flex-col items-center">
                     <div className="text-2xl md:text-3xl font-bold font-mono tracking-tighter">
                       {coords.longitude.toFixed(5)}
                     </div>
-                    <div className="text-[10px] text-slate-400 mt-0.5">Longitude</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">Longitudine</div>
                   </div>
                </div>
 
@@ -162,20 +162,20 @@ const App: React.FC = () => {
                         <div className="text-lg font-bold font-mono tracking-tight text-indigo-100">
                           {coords.stereo70.y.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                         </div>
-                        <div className="text-[10px] text-indigo-300/60 mt-0.5">N (Northing)</div>
+                        <div className="text-[10px] text-indigo-300/60 mt-0.5">N (Nord)</div>
                       </div>
                       <div className="flex flex-col items-center">
                         <div className="text-lg font-bold font-mono tracking-tight text-indigo-100">
                           {coords.stereo70.x.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                         </div>
-                        <div className="text-[10px] text-indigo-300/60 mt-0.5">E (Easting)</div>
+                        <div className="text-[10px] text-indigo-300/60 mt-0.5">E (Est)</div>
                       </div>
                    </div>
                  </>
                )}
                
                <p className="mt-4 text-[10px] text-slate-500 bg-slate-800/50 px-2 py-1 rounded-md">
-                 Accuracy: ±{coords.accuracy.toFixed(0)}m
+                 Precizie: ±{coords.accuracy.toFixed(0)}m
                </p>
             </div>
             
@@ -200,7 +200,7 @@ const App: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center justify-center gap-1 group"
               >
-                Open in Full Google Maps App
+                Deschide în Google Maps
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3 group-hover:translate-x-0.5 transition-transform">
                   <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
                 </svg>
@@ -221,7 +221,7 @@ const App: React.FC = () => {
         {/* Initial Prompt (if needed, though we auto-load) */}
         {locationStatus === LocationStatus.IDLE && (
            <div className="text-center text-slate-400 mt-10">
-             <p>Waiting to initialize...</p>
+             <p>Aștept inițializarea...</p>
            </div>
         )}
 

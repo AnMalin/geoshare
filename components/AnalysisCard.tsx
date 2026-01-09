@@ -16,11 +16,11 @@ const AnalysisCard: React.FC<AnalysisCardProps> = ({ status, analysis, onRetry }
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-blue-100 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <SparklesIcon className="w-5 h-5 text-indigo-600" />
-          <h3 className="font-semibold text-slate-800">AI Context</h3>
+          <h3 className="font-semibold text-slate-800">Context AI</h3>
         </div>
         {status === AnalysisStatus.LOADING && (
           <span className="text-xs font-medium text-indigo-600 bg-indigo-100 px-2 py-1 rounded-full animate-pulse">
-            Thinking...
+            Gândesc...
           </span>
         )}
       </div>
@@ -36,12 +36,12 @@ const AnalysisCard: React.FC<AnalysisCardProps> = ({ status, analysis, onRetry }
 
         {status === AnalysisStatus.ERROR && (
           <div className="text-center py-4">
-            <p className="text-red-500 text-sm mb-3">Failed to analyze location.</p>
+            <p className="text-red-500 text-sm mb-3">Nu am putut analiza locația.</p>
             <button 
               onClick={onRetry}
               className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline"
             >
-              Try Again
+              Încearcă din nou
             </button>
           </div>
         )}
@@ -54,7 +54,7 @@ const AnalysisCard: React.FC<AnalysisCardProps> = ({ status, analysis, onRetry }
 
             {analysis.sources.length > 0 && (
               <div className="mt-6 pt-4 border-t border-slate-100">
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Sources</p>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Surse</p>
                 <div className="flex flex-wrap gap-2">
                   {analysis.sources.map((source, index) => (
                     source.web && (

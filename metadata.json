@@ -1,5 +1,5 @@
 {
-  "name": "GeoShare AI",
+  "name": "Afla Locatia",
   "description": "Instantly pinpoint your location, get AI-powered context about your surroundings using Google Search, and share coordinates via WhatsApp or Email.",
   "requestFramePermissions": [
     "geolocation"

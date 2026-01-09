@@ -9,14 +9,14 @@ export const analyzeLocationContext = async (
   longitude: number
 ): Promise<LocationAnalysis> => {
   try {
-    const prompt = `I am currently located at Latitude: ${latitude}, Longitude: ${longitude}. 
+    const prompt = `Mă aflu la Latitudine: ${latitude}, Longitudine: ${longitude}.
     
-    Please do the following using Google Search:
-    1. Identify the approximate address or specific place name (e.g., park, building, neighborhood) for these coordinates.
-    2. Provide a brief 2-3 sentence summary of what this place is or what is nearby.
-    3. If there are any interesting facts or highly rated spots nearby, mention one.
+    Te rog să faci următoarele folosind Google Search:
+    1. Identifică adresa aproximativă sau numele locului (ex: parc, clădire, cartier) pentru aceste coordonate.
+    2. Oferă un scurt rezumat de 2-3 propoziții despre ce este acest loc sau ce se află în apropiere.
+    3. Dacă există fapte interesante sau locuri bine cotate în apropiere, menționează unul.
     
-    Keep the tone helpful and concise.`;
+    Răspunde DOAR în limba română. Păstrează un ton util și concis.`;
 
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -26,7 +26,7 @@ export const analyzeLocationContext = async (
       },
     });
 
-    const text = response.text || "Could not analyze location context.";
+    const text = response.text || "Nu s-a putut analiza contextul locației.";
     
     // Extract grounding metadata safely
     const groundingChunks = 
